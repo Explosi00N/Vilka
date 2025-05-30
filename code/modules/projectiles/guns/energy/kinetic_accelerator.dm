@@ -9,14 +9,14 @@
  */
 /obj/item/gun/energy/kinetic_accelerator
 	name = "proto-kinetic accelerator"
-	desc = "Самозарядное, дальнобойное шахтерское устройство, более смертоносное в условиях низкого давления. Оснащен стандартным хранилищем для модулей улучшения."
+	desc = "Самозарядное, дальнобойное шахтерское устройство, более смертоносное в условиях низкого давления. Может вместить до 3 стандартных (30%) модулей улучшения."
 	ru_names = list(
-        NOMINATIVE = "прото-кинетический акселератор",
-        GENITIVE = "прото-кинетического акселератора",
-        DATIVE = "прото-кинетическому акселератору",
-        ACCUSATIVE = "прото-кинетический акселератор",
-        INSTRUMENTAL = "прото-кинетическим акселератором",
-        PREPOSITIONAL = "прото-кинетическом акселераторе"
+		NOMINATIVE = "прото-кинетический акселератор",
+		GENITIVE = "прото-кинетического акселератора",
+		DATIVE = "прото-кинетическому акселератору",
+		ACCUSATIVE = "прото-кинетический акселератор",
+		INSTRUMENTAL = "прото-кинетическим акселератором",
+		PREPOSITIONAL = "прото-кинетическом акселераторе"
 	)
 	gender = MALE
 	icon_state = "kineticgun"
@@ -226,16 +226,15 @@
 
 /obj/item/gun/energy/kinetic_accelerator/experimental
 	name = "experimental kinetic accelerator"
-	desc = "Модифицированная версия Кинетического Акселератора. Оснащена расширенным хранилищем для модулей и блестящим корпусом."
+	desc = "Модифицированная версия прото-кинетического акселератора. Отличается расширенным в полтора раза хранилищем модулей и изящным, блестящим корпусом."
 	ru_names = list(
-        NOMINATIVE = "экспериментальный кинетический акселератор",
-        GENITIVE = "экпериментального кинетического акселератора",
-        DATIVE = "экспериментальному кинетическому акселератору",
-        ACCUSATIVE = "экспериментальный кинетический акселератор",
-        INSTRUMENTAL = "экспериментальным кинетическим акселератором",
-        PREPOSITIONAL = "экспериментальном кинетическом акселераторе"
+		NOMINATIVE = "экспериментальный кинетический акселератор",
+		GENITIVE = "экпериментального кинетического акселератора",
+		DATIVE = "экспериментальному кинетическому акселератору",
+		ACCUSATIVE = "экспериментальный кинетический акселератор",
+		INSTRUMENTAL = "экспериментальным кинетическим акселератором",
+		PREPOSITIONAL = "экспериментальном кинетическом акселераторе"
 	)
-	gender = MALE
 	icon_state = "kineticgun_h"
 	item_state = "kineticgun_h"
 	origin_tech = "combat=5;powerstorage=3;engineering=5"
@@ -247,16 +246,15 @@
 	icon_state = "kineticgun_m"
 	item_state = "kineticgun_mega"
 	empty_state = "kineticgun_m_empty"
-	desc = "Самозарядное, дальнобойное устройство, наносящее повышенный урон при низком давлении. Магмитовые детали позволяют расширить хранилище модулей еще дальше."
+	desc = "Самозарядное, дальнобойное устройство, улучшенное деталями из плазменного магмита. Имеет в 2 раза больше хранилища модулей, чем обычный акселератор."
 	ru_names = list(
-        NOMINATIVE = "магмитовый кинетический акселератор",
-        GENITIVE = "магмитового кинетического акселератора",
-        DATIVE = "магмитовому кинетическому акселератору",
-        ACCUSATIVE = "магмитовый кинетический акселератор",
-        INSTRUMENTAL = "магмитовым кинетическим акселератором",
-        PREPOSITIONAL = "магмитовом кинетическом акселераторе"
+		NOMINATIVE = "магмитовый кинетический акселератор",
+		GENITIVE = "магмитового кинетического акселератора",
+		DATIVE = "магмитовому кинетическому акселератору",
+		ACCUSATIVE = "магмитовый кинетический акселератор",
+		INSTRUMENTAL = "магмитовым кинетическим акселератором",
+		PREPOSITIONAL = "магмитовом кинетическом акселераторе"
 	)
-	gender = MALE
 	origin_tech = "combat=5;powerstorage=3;engineering=5"
 	max_mod_capacity = 200
 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
@@ -367,7 +365,8 @@
  */
 /obj/item/borg/upgrade/modkit
 	name = "kinetic accelerator modification kit"
-	desc = "Модуль улучшения. Устанавливается на кинетический акселератор."
+	desc = "Устаревший модуль, который ничего не делает. Где вы его взяли?"
+	gender = NEUTER
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "modkit"
 	origin_tech = "programming=2;materials=2;magnets=4"
@@ -390,7 +389,7 @@
 /obj/item/borg/upgrade/modkit/examine(mob/user)
 	. = ..()
 	if(in_range(user, src))
-		. += span_notice("Занимает <b>[cost]%</b> хранилища акселератора.")
+		. += span_notice("Занимает <b>[cost]%</b> хранилища модулей.")
 
 
 /obj/item/borg/upgrade/modkit/attackby(obj/item/I, mob/user, params)
@@ -418,7 +417,7 @@
 	add_fingerprint(user)
 	KA.add_fingerprint(user)
 	if(!(compatibility & KA.compatibility))
-		balloon_alert(user, "не подходит!")
+		user.balloon_alert(user, "не подходит!")
 		return FALSE
 	. = TRUE
 	if(denied_type)
@@ -435,13 +434,13 @@
 				return FALSE
 			if(loc != KA)
 				forceMove(KA)
-			balloon_alert(user, "модуль установлен")
+			user.balloon_alert(user, "модуль установлене!)
 			playsound(loc, usesound, 100, TRUE)
 			LAZYADD(KA.modkits, src)
 		else
-			balloon_alert(user, "модули противоречат!")
+			to_chat(user, span_notice("Модуль, который вы пытаетесь установить, конфликтует с другим установленным в акселератор модулем. Используйте лом, чтобы достать модули из КА."))
 	else
-		balloon_alert(user, "нет места!")
+		to_chat(user, span_notice("Не хватает хранилища модулей в акселераторе (Модуль занимает <b>[cost]%</b> хранилища, Свободно <b>[KA.get_remaining_mod_capacity()]%</b>.) Используйте лом, чтобы достать модули из КА."))
 		. = FALSE
 
 
@@ -466,14 +465,13 @@
 	name = "range increase"
 	desc = "Повышает дальность выстрелов кинетического акселератора."
 	ru_names = list(
-        NOMINATIVE = "повышение дальности",
-        GENITIVE = "повышения дальности",
-        DATIVE = "повышению дальности",
-        ACCUSATIVE = "повышение дальности",
-        INSTRUMENTAL = "повышением дальности",
-        PREPOSITIONAL = "повышении дальности"
+		NOMINATIVE = "повышение дальности",
+		GENITIVE = "повышения дальности",
+		DATIVE = "повышению дальности",
+		ACCUSATIVE = "повышение дальности",
+		INSTRUMENTAL = "повышением дальности",
+		PREPOSITIONAL = "повышении дальности"
 	)
-	gender = NEUTER
 	modifier = 1
 	cost = 24 // So you can fit four plus a tracer cosmetic.
 
@@ -491,14 +489,13 @@
 	name = "damage increase"
 	desc = "Повышает урон выстрелов кинетического акселератора."
 	ru_names = list(
-        NOMINATIVE = "повышение урона",
-        GENITIVE = "повышения урона",
-        DATIVE = "повышению урона",
-        ACCUSATIVE = "повышение урона",
-        INSTRUMENTAL = "повышением урона",
-        PREPOSITIONAL = "повышении урона"
+		NOMINATIVE = "повышение урона",
+		GENITIVE = "повышения урона",
+		DATIVE = "повышению урона",
+		ACCUSATIVE = "повышение урона",
+		INSTRUMENTAL = "повышением урона",
+		PREPOSITIONAL = "повышении урона"
 	)
-	gender = NEUTER
 	modifier = 10
 
 
@@ -532,12 +529,12 @@
 	name = "cooldown decrease"
 	desc = "Ускоряет перезарядку кинетического акселератора. Не предназначен для использования шахтерскими дронами."
 	ru_names = list(
-        NOMINATIVE = "ускорение перезарядки",
-        GENITIVE = "ускорения перезарядки",
-        DATIVE = "ускорению перезарядки",
-        ACCUSATIVE = "ускорение перезарядки",
-        INSTRUMENTAL = "ускорением перезарядки",
-        PREPOSITIONAL = "ускорении перезарядки"
+		NOMINATIVE = "ускорение перезарядки",
+		GENITIVE = "ускорения перезарядки",
+		DATIVE = "ускорению перезарядки",
+		ACCUSATIVE = "ускорение перезарядки",
+		INSTRUMENTAL = "ускорением перезарядки",
+		PREPOSITIONAL = "ускорении перезарядки"
 	)
 	gender = NEUTER
 	denied_type = /obj/item/borg/upgrade/modkit/cooldown/haste
@@ -553,12 +550,12 @@
 	name = "minebot cooldown decrease"
 	desc = "Ускоряет перезарядку кинетического акселератора. Предназначен только для использования шахтерскими дронами."
 	ru_names = list(
-        NOMINATIVE = "ускорение перезарядки шахтобота",
-        GENITIVE = "ускорения перезарядки шахтобота",
-        DATIVE = "ускорению перезарядки шахтобота",
-        ACCUSATIVE = "ускорение перезарядки шахтобота",
-        INSTRUMENTAL = "ускорением перезарядки шахтобота",
-        PREPOSITIONAL = "ускорении перезарядки шахтобота"
+		NOMINATIVE = "ускорение перезарядки шахтобота",
+		GENITIVE = "ускорения перезарядки шахтобота",
+		DATIVE = "ускорению перезарядки шахтобота",
+		ACCUSATIVE = "ускорение перезарядки шахтобота",
+		INSTRUMENTAL = "ускорением перезарядки шахтобота",
+		PREPOSITIONAL = "ускорении перезарядки шахтобота"
 	)
 	gender = NEUTER
 	icon_state = "door_electronics"
@@ -572,12 +569,12 @@
 	name = "rapid repeater"
 	desc = "Ускоряет перезарядку акселератора в 4 раза при попадании в живую цель или породу, но продлевает её при промахе."
 	ru_names = list(
-        NOMINATIVE = "скоростной повторитель",
-        GENITIVE = "скоростного повторителя",
-        DATIVE = "скоростному повторителю",
-        ACCUSATIVE = "скоростной повторитель",
-        INSTRUMENTAL = "скоростным повторителем",
-        PREPOSITIONAL = "скоростном повторителе"
+		NOMINATIVE = "скоростной повторитель",
+		GENITIVE = "скоростного повторителя",
+		DATIVE = "скоростному повторителю",
+		ACCUSATIVE = "скоростной повторитель",
+		INSTRUMENTAL = "скоростным повторителем",
+		PREPOSITIONAL = "скоростном повторителе"
 	)
 	gender = NEUTER
 	denied_type = /obj/item/borg/upgrade/modkit/cooldown/repeater
@@ -652,12 +649,12 @@
 	name = "mining explosion"
 	desc = "Позволяет выстрелам акселератора уничтожать породу в радиусе 3х3 клетки."
 	ru_names = list(
-        NOMINATIVE = "шахтёрский взрыв",
-        GENITIVE = "шахтёрского взрыва",
-        DATIVE = "шахтёрскому взрыву",
-        ACCUSATIVE = "шахтерский взрыв",
-        INSTRUMENTAL = "шахтерским взрывом",
-        PREPOSITIONAL = "шахтерском взрыве"
+		NOMINATIVE = "шахтёрский взрыв",
+		GENITIVE = "шахтёрского взрыва",
+		DATIVE = "шахтёрскому взрыву",
+		ACCUSATIVE = "шахтерский взрыв",
+		INSTRUMENTAL = "шахтерским взрывом",
+		PREPOSITIONAL = "шахтерском взрыве"
 	)
 	gender = MALE
 	turf_aoe = TRUE
@@ -667,12 +664,12 @@
 	name = "offensive mining explosion"
 	desc = "Позволяет выстрелам акселератора уничтожать породу и ранить существ в радиусе 3х3 клетки."
 	ru_names = list(
-        NOMINATIVE = "боевой шахтёрский взрыв",
-        GENITIVE = "боевого шахтёрского взрыва",
-        DATIVE = "боевому шахтёрскому взрыву",
-        ACCUSATIVE = "боевой шахтерский взрыв",
-        INSTRUMENTAL = "боевым шахтерским взрывом",
-        PREPOSITIONAL = "боевом шахтерском взрыве"
+		NOMINATIVE = "боевой шахтёрский взрыв",
+		GENITIVE = "боевого шахтёрского взрыва",
+		DATIVE = "боевому шахтёрскому взрыву",
+		ACCUSATIVE = "боевой шахтерский взрыв",
+		INSTRUMENTAL = "боевым шахтерским взрывом",
+		PREPOSITIONAL = "боевом шахтерском взрыве"
 	)
 	gender = MALE
 	modifier = 0.25
@@ -682,12 +679,12 @@
 	name = "offensive explosion"
 	desc = "Позволяет выстрелам акселератора ранить существ в радиусе 3х3 клетки."
 	ru_names = list(
-        NOMINATIVE = "боевой взрыв",
-        GENITIVE = "боевом взрыве",
-        DATIVE = "боевому взрыву",
-        ACCUSATIVE = "боевой взрыв",
-        INSTRUMENTAL = "боевым взрывом",
-        PREPOSITIONAL = "боевом взрыве"
+		NOMINATIVE = "боевой взрыв",
+		GENITIVE = "боевом взрыве",
+		DATIVE = "боевому взрыву",
+		ACCUSATIVE = "боевой взрыв",
+		INSTRUMENTAL = "боевым взрывом",
+		PREPOSITIONAL = "боевом взрыве"
 	)
 	gender = MALE
 	modifier = 0.2
@@ -706,12 +703,12 @@
 	name = "minebot passthrough"
 	desc = "Позволяет выстрелам кинетического акселератора проходить через шахтерских дронов насквозь, не нанося им урона."
 	ru_names = list(
-        NOMINATIVE = "игнорирование дронов",
-        GENITIVE = "игнорирования дронов",
-        DATIVE = "игнорированию дронов",
-        ACCUSATIVE = "игнорирование дронов",
-        INSTRUMENTAL = "игнорированием дронов",
-        PREPOSITIONAL = "игнорировании дронов"
+		NOMINATIVE = "игнорирование дронов",
+		GENITIVE = "игнорирования дронов",
+		DATIVE = "игнорированию дронов",
+		ACCUSATIVE = "игнорирование дронов",
+		INSTRUMENTAL = "игнорированием дронов",
+		PREPOSITIONAL = "игнорировании дронов"
 	)
 	gender = NEUTER
 	cost = 0
@@ -722,12 +719,12 @@
 	name = "hardness increase"
 	desc = "Повышает пробивную способность кинетического акселератора, позволяя более эффективно уничтожать плотную породу."
 	ru_names = list(
-        NOMINATIVE = "усилитель пробития",
-        GENITIVE = "усилителя пробития",
-        DATIVE = "усилителю пробития",
-        ACCUSATIVE = "усилитель пробития",
-        INSTRUMENTAL = "усилителем пробития",
-        PREPOSITIONAL = "усилителе пробития"
+		NOMINATIVE = "усилитель пробития",
+		GENITIVE = "усилителя пробития",
+		DATIVE = "усилителю пробития",
+		ACCUSATIVE = "усилитель пробития",
+		INSTRUMENTAL = "усилителем пробития",
+		PREPOSITIONAL = "усилителе пробития"
 	)
 	gender = NEUTER
 	denied_type = /obj/item/borg/upgrade/modkit/hardness
@@ -747,12 +744,12 @@
 	name = "resonator blast"
 	desc = "Модифицирует выстрелы кинетического акселератора, позволяя им оставлять за собой и взрывать поля резонатора."
 	ru_names = list(
-        NOMINATIVE = "резонирующий взрыв",
-        GENITIVE = "резонирующего взрыва",
-        DATIVE = "резонирующему взрыву",
-        ACCUSATIVE = "резонирующий взрыв",
-        INSTRUMENTAL = "резонирующим взрывом",
-        PREPOSITIONAL = "резонирующем взрыве"
+		NOMINATIVE = "резонирующий взрыв",
+		GENITIVE = "резонирующего взрыва",
+		DATIVE = "резонирующему взрыву",
+		ACCUSATIVE = "резонирующий взрыв",
+		INSTRUMENTAL = "резонирующим взрывом",
+		PREPOSITIONAL = "резонирующем взрыве"
 	)
 	gender = MALE
 	denied_type = /obj/item/borg/upgrade/modkit/resonator_blasts
@@ -777,12 +774,12 @@
 	name = "lifesteal crystal"
 	desc = "Позволяет кинетическому акселератору исцелять пользователя, при попадании по живой цели. Работает только на пользователей-гуманоидов."
 	ru_names = list(
-        NOMINATIVE = "кристалл вампиризма",
-        GENITIVE = "кристалла вампиризма",
-        DATIVE = "кристаллу вампиризма",
-        ACCUSATIVE = "кристалл вампиризма",
-        INSTRUMENTAL = "кристаллом вампиризма",
-        PREPOSITIONAL = "кристалле вампиризма"
+		NOMINATIVE = "кристалл вампиризма",
+		GENITIVE = "кристалла вампиризма",
+		DATIVE = "кристаллу вампиризма",
+		ACCUSATIVE = "кристалл вампиризма",
+		INSTRUMENTAL = "кристаллом вампиризма",
+		PREPOSITIONAL = "кристалле вампиризма"
 	)
 	gender = MALE
 	icon_state = "modkit_crystal"
@@ -806,12 +803,12 @@
 	name = "death syphon"
 	desc = "Убийство или помощь в убийстве существа навсегда увеличивает урон, наносимый этому типу фауны."
 	ru_names = list(
-        NOMINATIVE = "охота за головами",
-        GENITIVE = "охоты за головами",
-        DATIVE = "охоте за головами",
-        ACCUSATIVE = "охоту за головами",
-        INSTRUMENTAL = "охотой за головами",
-        PREPOSITIONAL = "охоте за головами"
+		NOMINATIVE = "охота за головами",
+		GENITIVE = "охоты за головами",
+		DATIVE = "охоте за головами",
+		ACCUSATIVE = "охоту за головами",
+		INSTRUMENTAL = "охотой за головами",
+		PREPOSITIONAL = "охоте за головами"
 	)
 	gender = FEMALE
 	denied_type = /obj/item/borg/upgrade/modkit/bounty
@@ -883,12 +880,12 @@
 	name = "modified trigger guard"
 	desc = "Модифицирует ударно-спусковой механизм, позволяя существам неспособным использовать оружие использовать КА."
 	ru_names = list(
-        NOMINATIVE = "модифицированный курок",
-        GENITIVE = "модифицированного курка",
-        DATIVE = "модифицированному курку",
-        ACCUSATIVE = "модифицированный курок",
-        INSTRUMENTAL = "модифицированным курком",
-        PREPOSITIONAL = "модифицированном курке"
+		NOMINATIVE = "модифицированный курок",
+		GENITIVE = "модифицированного курка",
+		DATIVE = "модифицированному курку",
+		ACCUSATIVE = "модифицированный курок",
+		INSTRUMENTAL = "модифицированным курком",
+		PREPOSITIONAL = "модифицированном курке"
 	)
 	gender = MALE
 	cost = 20
@@ -912,12 +909,12 @@
 	name = "super chassis"
 	desc = "Покрывает ваш кинетический акселератор блестящим, желтым корпусом. Все плюсы улучшенного КА, без улучшенного КА."
 	ru_names = list(
-        NOMINATIVE = "супер корпус",
-        GENITIVE = "супер корпуса",
-        DATIVE = "супер корпусу",
-        ACCUSATIVE = "супер корпус",
-        INSTRUMENTAL = "супер корпусом",
-        PREPOSITIONAL = "супер корпусе"
+		NOMINATIVE = "супер корпус",
+		GENITIVE = "супер корпуса",
+		DATIVE = "супер корпусу",
+		ACCUSATIVE = "супер корпус",
+		INSTRUMENTAL = "супер корпусом",
+		PREPOSITIONAL = "супер корпусе"
 	)
 	gender = MALE
 	cost = 0
@@ -945,12 +942,12 @@
 	name = "hyper chassis"
 	desc = "Покрывает ваш КА стильным оранжевым корпусом. Всё веселье устаревших технологий, без устаревших технологий."
 	ru_names = list(
-        NOMINATIVE = "гипер корпус",
-        GENITIVE = "гипер корпуса",
-        DATIVE = "гипер корпусу",
-        ACCUSATIVE = "гипер корпус",
-        INSTRUMENTAL = "гипер корпусом",
-        PREPOSITIONAL = "гипер корпусе"
+		NOMINATIVE = "гипер корпус",
+		GENITIVE = "гипер корпуса",
+		DATIVE = "гипер корпусу",
+		ACCUSATIVE = "гипер корпус",
+		INSTRUMENTAL = "гипер корпусом",
+		PREPOSITIONAL = "гипер корпусе"
 	)
 	gender = MALE
 	chassis_icon = "kineticgun_h"
@@ -961,12 +958,12 @@
 	name = "white tracer bolts"
 	desc = "Перекрашивает выстрелы кинетического акселератора в белый цвет."
 	ru_names = list(
-        NOMINATIVE = "белый трассер",
-        GENITIVE = "белого трассера",
-        DATIVE = "белому трассеру",
-        ACCUSATIVE = "белый трассер",
-        INSTRUMENTAL = "белым трассером",
-        PREPOSITIONAL = "белом трассере"
+		NOMINATIVE = "белый трассер",
+		GENITIVE = "белого трассера",
+		DATIVE = "белому трассеру",
+		ACCUSATIVE = "белый трассер",
+		INSTRUMENTAL = "белым трассером",
+		PREPOSITIONAL = "белом трассере"
 	)
 	gender = MALE
 	cost = 0
@@ -984,12 +981,12 @@
 	name = "adjustable tracer bolts"
 	desc = "Перекрашивает выстрелы кинетического акселератора. Используйте в руке чтобы выбрать цвет."
 	ru_names = list(
-        NOMINATIVE = "цветной трассер",
-        GENITIVE = "цветного трассера",
-        DATIVE = "цветному трассеру",
-        ACCUSATIVE = "цветной трассер",
-        INSTRUMENTAL = "цветным трассером",
-        PREPOSITIONAL = "цветном трассере"
+		NOMINATIVE = "цветной трассер",
+		GENITIVE = "цветного трассера",
+		DATIVE = "цветному трассеру",
+		ACCUSATIVE = "цветной трассер",
+		INSTRUMENTAL = "цветным трассером",
+		PREPOSITIONAL = "цветном трассере"
 	)
 	gender = MALE
 
