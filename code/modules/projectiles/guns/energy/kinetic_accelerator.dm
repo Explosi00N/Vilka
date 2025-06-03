@@ -57,7 +57,7 @@
 		if(max_mod_capacity)
 			. += span_notice("Свободно <b>[get_remaining_mod_capacity()]%</b> хранилища модулей.")
 			for(var/obj/item/borg/upgrade/modkit/MK in get_modkits())
-				. += span_notice("Установлен модуль '<b>[MK.declent_ru(NOMINATIVE)]</b>', занимающий <b>[MK.cost]%</b> хранилища.")
+				. += span_notice("Установле[genderize_ru(MK.gender, н, на, но, ны)] <b>[MK.declent_ru(NOMINATIVE)]</b>', занимающий <b>[MK.cost]%</b> хранилища.")
 
 
 /obj/item/gun/energy/kinetic_accelerator/attackby(obj/item/I, mob/user, params)
@@ -246,7 +246,7 @@
 	icon_state = "kineticgun_m"
 	item_state = "kineticgun_mega"
 	empty_state = "kineticgun_m_empty"
-	desc = "Самозарядное, дальнобойное устройство, улучшенное деталями из плазменного магмита. Имеет в 2 раза больше хранилища модулей, чем обычный акселератор."
+	desc = "Самозарядное, дальнобойное устройство, улучшенное деталями из плазменного магмита. Может хранить в 2 раза больше модулей, чем стандартный акселератор."
 	ru_names = list(
 		NOMINATIVE = "магмитовый кинетический акселератор",
 		GENITIVE = "магмитового кинетического акселератора",
@@ -465,7 +465,7 @@
 	name = "range increase"
 	desc = "Повышает дальность выстрелов кинетического акселератора."
 	ru_names = list(
-		NOMINATIVE = "повышение дальности",
+		NOMINATIVE = "модуль "повышение дальности"",
 		GENITIVE = "повышения дальности",
 		DATIVE = "повышению дальности",
 		ACCUSATIVE = "повышение дальности",
