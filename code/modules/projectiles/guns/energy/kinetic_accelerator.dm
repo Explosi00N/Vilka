@@ -465,12 +465,12 @@
 	name = "range increase"
 	desc = "Повышает дальность выстрелов кинетического акселератора."
 	ru_names = list(
-		NOMINATIVE = "модуль "повышение дальности"",
-		GENITIVE = "повышения дальности",
-		DATIVE = "повышению дальности",
-		ACCUSATIVE = "повышение дальности",
-		INSTRUMENTAL = "повышением дальности",
-		PREPOSITIONAL = "повышении дальности"
+		NOMINATIVE = "модуль \"Повышение дальности\"",
+		GENITIVE = "модуля \"Повышение дальности\"",
+		DATIVE = "модулю \"Повышение дальности\"",
+		ACCUSATIVE = "модуль \"Повышение дальности\"",
+		INSTRUMENTAL = "модулем \"Повышение дальности\"",
+		PREPOSITIONAL = "модуле \"Повышение дальности\""
 	)
 	modifier = 1
 	cost = 24 // So you can fit four plus a tracer cosmetic.
