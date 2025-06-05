@@ -489,12 +489,12 @@
 	name = "damage increase"
 	desc = "Повышает урон выстрелов кинетического акселератора."
 	ru_names = list(
-		NOMINATIVE = "повышение урона",
-		GENITIVE = "повышения урона",
-		DATIVE = "повышению урона",
-		ACCUSATIVE = "повышение урона",
-		INSTRUMENTAL = "повышением урона",
-		PREPOSITIONAL = "повышении урона"
+		NOMINATIVE = "модуль \"Повышение урона\"",
+		GENITIVE = "модуля \"Повышение урона\"",
+		DATIVE = "модулю \"Повышение урона\"",
+		ACCUSATIVE = "модуль \"Повышение урона\"",
+		INSTRUMENTAL = "модулем \"Повышение урона\"",
+		PREPOSITIONAL = "модуле \"Повышение урона\""
 	)
 	modifier = 10
 
