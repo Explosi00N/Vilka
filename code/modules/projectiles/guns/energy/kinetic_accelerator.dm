@@ -84,12 +84,12 @@
 /obj/item/gun/energy/kinetic_accelerator/proc/deattach_modkits(mob/user)
 	var/notification
 	if(!LAZYLEN(modkits))
-		notification = "модификации отсутствуют!"
+		notification = "модули отсутствуют!"
 	else
 		for(var/obj/item/borg/upgrade/modkit/MK in modkits)
 			modkit_predeattach(MK, loc)	// God bless anyone who have time for turning modkits back to `/obj/item/modkit`.
 			MK.uninstall(src)
-		notification = "модификации сняты"
+		notification = "модули сняты"
 
 	if(user)
 		balloon_alert(user, notification)
@@ -434,7 +434,7 @@
 				return FALSE
 			if(loc != KA)
 				forceMove(KA)
-			user.balloon_alert(user, "модуль установлене!)
+			user.balloon_alert(user, "модуль установлен!)
 			playsound(loc, usesound, 100, TRUE)
 			LAZYADD(KA.modkits, src)
 		else
@@ -463,7 +463,7 @@
 // Range
 /obj/item/borg/upgrade/modkit/range
 	name = "range increase"
-	desc = "Модуль. Повышает дальность выстрелов кинетического акселератора."
+	desc = "Модуль улучшения. Повышает дальность выстрелов кинетического акселератора."
 	ru_names = list(
 		NOMINATIVE = "модуль \"Повышение дальности\"",
 		GENITIVE = "модуля \"Повышение дальности\"",
@@ -529,14 +529,13 @@
 	name = "cooldown decrease"
 	desc = "Стандартный модуль. Ускоряет перезарядку кинетического акселератора. Не предназначен для использования шахтерскими дронами."
 	ru_names = list(
-		NOMINATIVE = "ускорение перезарядки",
-		GENITIVE = "ускорения перезарядки",
-		DATIVE = "ускорению перезарядки",
-		ACCUSATIVE = "ускорение перезарядки",
-		INSTRUMENTAL = "ускорением перезарядки",
-		PREPOSITIONAL = "ускорении перезарядки"
+		NOMINATIVE = "модуль \"Ускорение перезарядки\"",
+		GENITIVE = "модуля \"Ускорение перезарядки\"",
+		DATIVE = "модулю \"Ускорение перезарядки\"",
+		ACCUSATIVE = "модуль \"Ускорение перезарядки\"",
+		INSTRUMENTAL = "модулем \"Ускорение перезарядки\"",
+		PREPOSITIONAL = "модуле \"Ускорение перезарядки\""
 	)
-	gender = NEUTER
 	denied_type = /obj/item/borg/upgrade/modkit/cooldown/haste
 	modifier = 3.2
 
@@ -549,15 +548,6 @@
 /obj/item/borg/upgrade/modkit/cooldown/haste/minebot
 	name = "minebot cooldown decrease"
 	desc = "Ускоряет перезарядку кинетического акселератора. Предназначен только для использования шахтерскими дронами."
-	ru_names = list(
-		NOMINATIVE = "ускорение перезарядки шахтобота",
-		GENITIVE = "ускорения перезарядки шахтобота",
-		DATIVE = "ускорению перезарядки шахтобота",
-		ACCUSATIVE = "ускорение перезарядки шахтобота",
-		INSTRUMENTAL = "ускорением перезарядки шахтобота",
-		PREPOSITIONAL = "ускорении перезарядки шахтобота"
-	)
-	gender = NEUTER
 	icon_state = "door_electronics"
 	icon = 'icons/obj/module.dmi'
 	modifier = 10
@@ -569,19 +559,19 @@
 	name = "rapid repeater"
 	desc = "Особый модуль, который ускоряет перезарядку акселератора в 4 раза при попадании в живую цель или породу, но продлевает её при промахе."
 	ru_names = list(
-		NOMINATIVE = "скоростной повторитель",
-		GENITIVE = "скоростного повторителя",
-		DATIVE = "скоростному повторителю",
-		ACCUSATIVE = "скоростной повторитель",
-		INSTRUMENTAL = "скоростным повторителем",
-		PREPOSITIONAL = "скоростном повторителе"
+		NOMINATIVE = "модуль \"Скоростной повторитель\"",
+		GENITIVE = "модуля \"Скоростной повторитель\"",
+		DATIVE = "модулю \"Скоростной повторитель\"",
+		ACCUSATIVE = "модуль \"Скоростной повторитель\"",
+		INSTRUMENTAL = "модулем \"Скоростной повторитель\"",
+		PREPOSITIONAL = "модуле \"Скоростной повторитель\""
 	)
-	gender = NEUTER
 	denied_type = /obj/item/borg/upgrade/modkit/cooldown/repeater
 	modifier = -14 // Makes the cooldown 3 seconds (with no cooldown mods) if you miss. Don't miss.
 	cost = 50
 
 /obj/item/borg/upgrade/modkit/cooldown/repeater/borg
+	desc = "Особый модуль, который ускоряет перезарядку акселератора в 4 раза при попадании в живую цель или породу, но продлевает её при промахе. Предназначен только для использования киборгами."
 	compatibility = COMPATIBILITY_CYBORG
 
 /obj/item/borg/upgrade/modkit/cooldown/repeater/projectile_strike_predamage(obj/projectile/kinetic/K, turf/target_turf, atom/target, obj/item/gun/energy/kinetic_accelerator/KA)
@@ -649,12 +639,12 @@
 	name = "mining explosion"
 	desc = "Стандартный модуль. Позволяет выстрелам акселератора уничтожать породу в радиусе 3х3 клетки."
 	ru_names = list(
-		NOMINATIVE = "шахтёрский взрыв",
-		GENITIVE = "шахтёрского взрыва",
-		DATIVE = "шахтёрскому взрыву",
-		ACCUSATIVE = "шахтерский взрыв",
-		INSTRUMENTAL = "шахтерским взрывом",
-		PREPOSITIONAL = "шахтерском взрыве"
+		NOMINATIVE = "модуль \"Шахтёрский взрыв\"",
+		GENITIVE = "модуля \"Шахтёрский взрыв\"",
+		DATIVE = "модулю \"Шахтёрский взрыв\"",
+		ACCUSATIVE = "модуль \"Шахтёрский взрыв\"",
+		INSTRUMENTAL = "модуле \"Шахтёрский взрыв\"",
+		PREPOSITIONAL = "модулем \"Шахтёрский взрыв\""
 	)
 	gender = MALE
 	turf_aoe = TRUE
@@ -664,12 +654,12 @@
 	name = "offensive mining explosion"
 	desc = "Стандартный модуль. Позволяет выстрелам акселератора уничтожать породу и ранить существ в радиусе 3х3 клетки."
 	ru_names = list(
-		NOMINATIVE = "боевой шахтёрский взрыв",
-		GENITIVE = "боевого шахтёрского взрыва",
-		DATIVE = "боевому шахтёрскому взрыву",
-		ACCUSATIVE = "боевой шахтерский взрыв",
-		INSTRUMENTAL = "боевым шахтерским взрывом",
-		PREPOSITIONAL = "боевом шахтерском взрыве"
+		NOMINATIVE = "модуль \"Боевой шахтёрский взрыв\"",
+		GENITIVE = "модуля \"Боевой шахтёрский взрыв\"",
+		DATIVE = "модулю \"Боевой шахтёрский взрыв\"",
+		ACCUSATIVE = "модуль \"Боевой шахтёрский взрыв\"",
+		INSTRUMENTAL = "модуле \"Боевой шахтёрский взрыв\"",
+		PREPOSITIONAL = "модулем \"Боевой шахтёрский взрыв\""
 	)
 	gender = MALE
 	modifier = 0.25
@@ -679,12 +669,12 @@
 	name = "offensive explosion"
 	desc = "Стандартный модуль. Позволяет выстрелам акселератора ранить существ в радиусе 3х3 клетки."
 	ru_names = list(
-		NOMINATIVE = "боевой взрыв",
-		GENITIVE = "боевом взрыве",
-		DATIVE = "боевому взрыву",
-		ACCUSATIVE = "боевой взрыв",
-		INSTRUMENTAL = "боевым взрывом",
-		PREPOSITIONAL = "боевом взрыве"
+		NOMINATIVE = ""модуль \"Боевой взрыв\""",
+		GENITIVE = ""модуль \"Боевой взрыв\""",
+		DATIVE = ""модуль \"Боевой взрыв\""",
+		ACCUSATIVE = ""модуль \"Боевой взрыв\""",
+		INSTRUMENTAL = ""модуль \"Боевой взрыв\""",
+		PREPOSITIONAL = ""модуль \"Боевой взрыв\"""
 	)
 	gender = MALE
 	modifier = 0.2
