@@ -366,7 +366,7 @@
 /obj/item/borg/upgrade/modkit
 	name = "kinetic accelerator modification kit"
 	desc = "Устаревший модуль, который ничего не делает. Где вы его взяли?"
-	gender = NEUTER
+	gender = MALE
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "modkit"
 	origin_tech = "programming=2;materials=2;magnets=4"
@@ -646,7 +646,6 @@
 		INSTRUMENTAL = "модуле \"Шахтёрский взрыв\"",
 		PREPOSITIONAL = "модулем \"Шахтёрский взрыв\""
 	)
-	gender = MALE
 	turf_aoe = TRUE
 
 
@@ -661,7 +660,6 @@
 		INSTRUMENTAL = "модуле \"Боевой шахтёрский взрыв\"",
 		PREPOSITIONAL = "модулем \"Боевой шахтёрский взрыв\""
 	)
-	gender = MALE
 	modifier = 0.25
 
 
@@ -669,14 +667,13 @@
 	name = "offensive explosion"
 	desc = "Стандартный модуль. Позволяет выстрелам акселератора ранить существ в радиусе 3х3 клетки."
 	ru_names = list(
-		NOMINATIVE = ""модуль \"Боевой взрыв\""",
-		GENITIVE = ""модуль \"Боевой взрыв\""",
-		DATIVE = ""модуль \"Боевой взрыв\""",
-		ACCUSATIVE = ""модуль \"Боевой взрыв\""",
-		INSTRUMENTAL = ""модуль \"Боевой взрыв\""",
-		PREPOSITIONAL = ""модуль \"Боевой взрыв\"""
+		NOMINATIVE = "модуль \"Боевой взрыв\"",
+		GENITIVE = "модуля \"Боевой взрыв\"",
+		DATIVE = "модулю \"Боевой взрыв\"",
+		ACCUSATIVE = "модуль \"Боевой взрыв\"",
+		INSTRUMENTAL = "модулем \"Боевой взрыв\"",
+		PREPOSITIONAL = "модуле \"Боевой взрыв\""
 	)
-	gender = MALE
 	modifier = 0.2
 
 /obj/item/borg/upgrade/modkit/aoe/turfs/borg
@@ -691,16 +688,15 @@
 // Minebot passthrough
 /obj/item/borg/upgrade/modkit/minebot_passthrough
 	name = "minebot passthrough"
-	desc = "Бесплатный модуль. Позволяет выстрелам кинетического акселератора проходить через шахтерских дронов насквозь, не нанося им урона."
+	desc = "Особый модуль, который позволяет выстрелам кинетического акселератора проходить через шахтерских дронов насквозь, не нанося им урона."
 	ru_names = list(
-		NOMINATIVE = "игнорирование дронов",
-		GENITIVE = "игнорирования дронов",
-		DATIVE = "игнорированию дронов",
-		ACCUSATIVE = "игнорирование дронов",
-		INSTRUMENTAL = "игнорированием дронов",
-		PREPOSITIONAL = "игнорировании дронов"
+		NOMINATIVE = "модуль /"Игнорирование дронов/"",
+		GENITIVE = "модуль /"Игнорирование дронов/"",
+		DATIVE = "модуль /"Игнорирование дронов/"",
+		ACCUSATIVE = "модуль /"Игнорирование дронов/"",
+		INSTRUMENTAL = "модуль /"Игнорирование дронов/"",
+		PREPOSITIONAL = "модуль /"Игнорирование дронов/""
 	)
-	gender = NEUTER
 	cost = 0
 
 
@@ -709,14 +705,14 @@
 	name = "hardness increase"
 	desc = "Стандартный модуль. Повышает пробивную способность кинетического акселератора, позволяя более эффективно уничтожать плотную породу."
 	ru_names = list(
-		NOMINATIVE = "усилитель пробития",
-		GENITIVE = "усилителя пробития",
-		DATIVE = "усилителю пробития",
-		ACCUSATIVE = "усилитель пробития",
-		INSTRUMENTAL = "усилителем пробития",
-		PREPOSITIONAL = "усилителе пробития"
+		NOMINATIVE = "модуль /"Усилитель пробития/"",
+		GENITIVE = "модуля /"Усилитель пробития/"",
+		DATIVE = "модулю /"Усилитель пробития/"",
+		ACCUSATIVE = "модуль /"Усилитель пробития/"",
+		INSTRUMENTAL = "модулем /"Усилитель пробития/"",
+		PREPOSITIONAL = "модуле /"Усилитель пробития/""
 	)
-	gender = NEUTER
+
 	denied_type = /obj/item/borg/upgrade/modkit/hardness
 	cost = 30
 
@@ -741,7 +737,6 @@
 		INSTRUMENTAL = "резонирующим взрывом",
 		PREPOSITIONAL = "резонирующем взрыве"
 	)
-	gender = MALE
 	denied_type = /obj/item/borg/upgrade/modkit/resonator_blasts
 	cost = 30
 	modifier = 0.25 // A bonus 15 damage if you burst the field on a target, 60 if you lure them into it.
@@ -771,7 +766,6 @@
 		INSTRUMENTAL = "кристаллом вампиризма",
 		PREPOSITIONAL = "кристалле вампиризма"
 	)
-	gender = MALE
 	icon_state = "modkit_crystal"
 	modifier = 2.5 //Not a very effective method of healing.
 	cost = 20
@@ -800,7 +794,6 @@
 		INSTRUMENTAL = "охотой за головами",
 		PREPOSITIONAL = "охоте за головами"
 	)
-	gender = FEMALE
 	denied_type = /obj/item/borg/upgrade/modkit/bounty
 	modifier = 1.25
 	cost = 30
@@ -877,7 +870,6 @@
 		INSTRUMENTAL = "модифицированным курком",
 		PREPOSITIONAL = "модифицированном курке"
 	)
-	gender = MALE
 	cost = 20
 	denied_type = /obj/item/borg/upgrade/modkit/trigger_guard
 	compatibility = COMPATIBILITY_STANDART
@@ -906,7 +898,6 @@
 		INSTRUMENTAL = "супер корпусом",
 		PREPOSITIONAL = "супер корпусе"
 	)
-	gender = MALE
 	cost = 0
 	denied_type = /obj/item/borg/upgrade/modkit/chassis_mod
 	/// This text replaces KA's `icon_state` after installation.
@@ -939,7 +930,6 @@
 		INSTRUMENTAL = "гипер корпусом",
 		PREPOSITIONAL = "гипер корпусе"
 	)
-	gender = MALE
 	chassis_icon = "kineticgun_h"
 	chassis_name = "hyper-kinetic accelerator"
 
@@ -955,7 +945,6 @@
 		INSTRUMENTAL = "белым трассером",
 		PREPOSITIONAL = "белом трассере"
 	)
-	gender = MALE
 	cost = 0
 	denied_type = /obj/item/borg/upgrade/modkit/tracer
 	/// This color colors the projectiles after installation.
@@ -978,7 +967,6 @@
 		INSTRUMENTAL = "цветным трассером",
 		PREPOSITIONAL = "цветном трассере"
 	)
-	gender = MALE
 
 
 /obj/item/borg/upgrade/modkit/tracer/adjustable/attack_self(mob/user)
