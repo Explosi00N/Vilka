@@ -246,7 +246,7 @@
 	icon_state = "kineticgun_m"
 	item_state = "kineticgun_mega"
 	empty_state = "kineticgun_m_empty"
-	desc = "Самозарядное, дальнобойное устройство, улучшенное деталями из плазменного магмита. Может хранить в 2 раза больше модулей, чем стандартный акселератор."
+	desc = "Самозарядное, дальнобойное устройство, улучшенное деталями из плазменного магмита. Вмещает в 2 раза больше модулей, чем стандартный акселератор."
 	ru_names = list(
 		NOMINATIVE = "магмитовый кинетический акселератор",
 		GENITIVE = "магмитового кинетического акселератора",
@@ -439,10 +439,8 @@
 			LAZYADD(KA.modkits, src)
 		else
 			to_chat(user, span_notice("Модуль, который вы пытаетесь установить, конфликтует с другим установленным в акселератор модулем. Используйте лом, чтобы достать модули из КА."))
-			user.balloon_alert(user, "модули конфликтуют!")
 	else
 		to_chat(user, span_notice("Не хватает хранилища модулей в акселераторе (Модуль занимает <b>[cost]%</b> хранилища, Свободно <b>[KA.get_remaining_mod_capacity()]%</b>.) Используйте лом, чтобы достать модули из КА."))
-		user.balloon_alert(user, "нет места!")
 		. = FALSE
 
 
@@ -455,7 +453,7 @@
 
 
 /// Use this one for effects you want to trigger before any damage is done at all and before damage is decreased by pressure.
-/obj/item/borg/upgrade/modkit/proc/projectile_prehit(obj/projectile/kinetic/K, atom/target, obj/item/gun/energy/kinetic_accelerator/KA)
+/obj/item/borg/upgrade/modkit/proc/projectile_prehit(obj/projectile/kinetic/K, atom/target, obj/item/gun/energy/kinetic_aczcelerator/KA)
 /// Use this one for effects you want to trigger before mods that do damage.
 /obj/item/borg/upgrade/modkit/proc/projectile_strike_predamage(obj/projectile/kinetic/K, turf/target_turf, atom/target, obj/item/gun/energy/kinetic_accelerator/KA)
 /// Use this one for things that don't need to trigger before other damage-dealing mods.
@@ -759,7 +757,7 @@
 // Tendril-unique modules
 /obj/item/borg/upgrade/modkit/lifesteal
 	name = "lifesteal crystal"
-	desc = "Особый модуль, который позволяет кинетическому акселератору исцелять пользователя, при попадании по живой цели. Работает только на пользователей-гуманоидов."
+	desc = "Странный кристалл, который может быть установлен на кинетический акселератор. Позволяет выстрелам КА исцелять пользователя, при попадании по живой цели."
 	ru_names = list(
 		NOMINATIVE = "кристалл вампиризма",
 		GENITIVE = "кристалла вампиризма",
@@ -863,7 +861,7 @@
 // Trigger Guard
 /obj/item/borg/upgrade/modkit/trigger_guard
 	name = "modified trigger guard"
-	desc = "Особый модуль. Модифицирует ударно-спусковой механизм, позволяя существам неспособным использовать оружие использовать КА."
+	desc = "Особый модуль. Модифицирует ударно-спусковой механизм, позволяя существам обычно неспособным использовать оружие стрелять из кинетического акселератора."
 	ru_names = list(
 		NOMINATIVE = "модифицированный курок",
 		GENITIVE = "модифицированного курка",
